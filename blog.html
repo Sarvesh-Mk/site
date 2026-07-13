@@ -27,11 +27,15 @@
       font-size: 0.9rem;
     }
     .post {
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
+    }
+    .post summary {
+      cursor: pointer;
+      padding: 0.5rem 0;
     }
     .post + .post {
       border-top: 1px solid #333;
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
   </style>
 </head>
@@ -59,7 +63,7 @@
           posts
             .map(
               p =>
-                "<hr>" + '<div class="post"><h2 class="post-date">' + p.date + "</h2>" + p.html + "</div>" + "<hr>" 
+                '<details class="post"><summary class="post-date">' + p.date + "</summary>" + p.html + "</details>"
             )
             .join("");
       });
