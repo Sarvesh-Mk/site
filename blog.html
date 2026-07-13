@@ -22,12 +22,20 @@
     a {
       color: #fff;
     }
+    .post-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
     .post-date {
       color: #888;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
+      margin-left: 0.75rem;
     }
     .post {
       margin-bottom: 1rem;
+    }
+    .post[open] .post-title {
+      display: none;
     }
     .post summary {
       cursor: pointer;
@@ -52,7 +60,11 @@
           posts.map(p =>
             fetch("posts/" + p.file)
               .then(res => res.text())
-              .then(md => ({ ...p, html: marked.parse(md) }))
+              .then(md => ({
+                ...p,
+                title: (md.match(/^#\s+(.*)$/m) || [, p.file])[1],
+                html: marked.parse(md)
+              }))
           )
         )
       )
@@ -63,7 +75,8 @@
           posts
             .map(
               p =>
-                '<details class="post"><summary class="post-date">' + p.date + "</summary>" + p.html + "</details>"
+                '<details class="post"><summary><span class="post-title">' + p.title +
+                '</span><span class="post-date">' + p.date + "</span></summary>" + p.html + "</details>"
             )
             .join("");
       });
