@@ -4,6 +4,9 @@
   <title>Blog - Hey I'm Sarvesh!</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       background: #000;
       color: #fff;
@@ -15,7 +18,7 @@
     }
     main {
       width: 100%;
-      max-width: 700px;
+      max-width: 900px;
       padding: 2rem 1rem;
       text-align: left;
     }
@@ -49,6 +52,13 @@
     .post + .post {
       border-top: 1px solid #333;
       padding-top: 1rem;
+    }
+    .post img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.5rem 0;
+      border-radius: 4px;
     }
   </style>
 </head>
